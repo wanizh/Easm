@@ -16,6 +16,8 @@ public class User implements Serializable {
 	private Integer age; // age
 	private Date creatTime; // creatTime
 
+	private String account;
+
 	public Integer getId() {
 		return id;
 	}
@@ -54,6 +56,14 @@ public class User implements Serializable {
 
 	public void setCreatTime(Date creatTime) {
 		this.creatTime = creatTime;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
 	}
 
 }
