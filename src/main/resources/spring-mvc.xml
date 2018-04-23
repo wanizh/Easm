@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+	<!-- 配置扫描路径 -->
+	<context:component-scan base-package="com.beterch.easm.web" />
+
+	<!-- 配置根视图 -->
+	<mvc:view-controller path="/" view-name="index" />
+
+	<!-- 开启@MatrixVariable注解 -->
+	<mvc:annotation-driven enable-matrix-variables="true" />
+	<!-- 激活基于注解的配置 @RequestMapping, @ExceptionHandler,数据绑定 ,@NumberFormat , 
+		@DateTimeFormat ,@Controller ,@Valid ,@RequestBody ,@ResponseBody等 -->
+	<mvc:annotation-driven />
+
+	<!--对静态资源文件的访问 -->
+	<mvc:resources location="/assets/" mapping="/assets/**" />
+
+	<!-- jsp视图层配置 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 文件上传的bean 10*1024*1024 10M -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		p:defaultEncoding="UTF-8" p:maxUploadSize="10485760" p:resolveLazily="true" />
+
+	<!-- 这两个类用来启动基于Spring MVC的注解功能，将控制器与方法映射加入到容器中 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" 
+		/> -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" 
+		/> -->
+
+
+
+
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources/ directory -->
+	<!-- 对静态资源文件的访问 -->
+	<!-- <mvc:resources mapping="/resource/**" location="/resource/" /> <mvc:resources 
+		mapping="/static/**" location="/static/" /> -->
+	<!-- theme -->
+	<!-- <bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"> 
+		<property name="paramName" value="theme"></property> </bean> -->
+	<!-- Saves a locale change using a cookie -->
+	<!-- <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" 
+		/> -->
+	<!-- Application Message Bundle -->
+	<!-- <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"> 
+		<property name="basename" value="classpath:/messages/message-info" /> <property 
+		name="cacheSeconds" value="0" /> </bean> -->
+	<!-- 映射所有没有在controller中配置的path，对应到 jsp 目录中 -->
+	<!-- <mvc:view-controller path="/**" /> -->
+
+	<!-- this bean with the well known name generates view names for us -->
+	<!-- <bean id="viewNameTranslator" class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator"> 
+		</bean> -->
+	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+		<property name="maxUploadSize"> <value>209715200</value> </property> <property 
+		name="maxInMemorySize"> <value>4096</value> </property> </bean> -->
+</beans>
