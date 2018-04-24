@@ -145,16 +145,7 @@
 			advice-ref="txAdvice" order="200" />
 	</aop:config>
 
-	<!-- 配置 JPA 的 EntityManagerFactory -->
-	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="packagesToScan" value="com.beterch.easm.app.entity" />
-		<property name="jpaProperties">
-			<props>
-				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-			</props>
-		</property>
-	</bean>
+	
 
 	<aop:aspectj-autoproxy />
 
