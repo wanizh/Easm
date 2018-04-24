@@ -10,10 +10,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<spring.version>4.1.7.RELEASE</spring.version>
-
+		<spring.version>4.3.3.RELEASE</spring.version>
+		
 		<hibernate.version>4.2.0.Final</hibernate.version>
-		<dao-hibernate.version>1.2.0</dao-hibernate.version>
+		<!--<dao-hibernate.version>1.2.0</dao-hibernate.version> -->
 		<sitemesh.version>2.4.2</sitemesh.version>
 		<!-- <c3p0.version>0.9.1.2</c3p0.version> -->
 		<!-- <mysqldriver.version>5.1.20</mysqldriver.version> -->
@@ -110,6 +110,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.10.2.RELEASE</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
@@ -128,11 +134,8 @@
 			<artifactId>hibernate-ehcache</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.googlecode.genericdao</groupId>
-			<artifactId>dao-hibernate</artifactId>
-			<version>${dao-hibernate.version}</version>
-		</dependency>
+		<!-- <dependency> <groupId>com.googlecode.genericdao</groupId> <artifactId>dao-hibernate</artifactId> 
+			<version>${dao-hibernate.version}</version> </dependency> -->
 		<!-- hibernate end -->
 
 		<!-- AOP -->
